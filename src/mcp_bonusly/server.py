@@ -46,7 +46,7 @@ async def handle_list_tools() -> list[Tool]:
     return [
         Tool(
             name="list_bonuses",
-            description="List bonuses with optional filtering by date range, users, or hashtags",
+            description="List bonuses with optional filtering by date range, users, or hashtags. IMPORTANT: For team-specific analysis, use 'user_email' for each team member individually instead of global searches with 'limit' to ensure complete team coverage.",
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -75,6 +75,11 @@ async def handle_list_tools() -> list[Tool]:
                     "receiver_email": {
                         "type": "string",
                         "description": "Filter by receiver's email address",
+                        "format": "email"
+                    },
+                    "user_email": {
+                        "type": "string",
+                        "description": "Filter by user's email address (bonuses given or received by this user). RECOMMENDED for team analysis: search for each team member individually to ensure complete coverage.",
                         "format": "email"
                     },
                     "hashtag": {
@@ -154,6 +159,7 @@ async def handle_call_tool(name: str, arguments: dict[str, Any]) -> list[TextCon
             return await _handle_create_bonus(client, arguments)
         elif name == "get_bonus":
             return await _handle_get_bonus(client, arguments)
+
         else:
             raise ValueError(f"Unknown tool: {name}")
             

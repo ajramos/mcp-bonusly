@@ -140,6 +140,8 @@ class BonuslyClient:
             params["giver_email"] = request.giver_email
         if request.receiver_email:
             params["receiver_email"] = request.receiver_email
+        if request.user_email:
+            params["user_email"] = request.user_email
         if request.hashtag:
             # Ensure hashtag starts with #
             hashtag = request.hashtag

@@ -82,6 +82,7 @@ class ListBonusesRequest(BaseModel):
     end_date: Optional[str] = Field(None, description="End date (YYYY-MM-DD)")
     giver_email: Optional[EmailStr] = Field(None, description="Filter by giver's email")
     receiver_email: Optional[EmailStr] = Field(None, description="Filter by receiver's email")
+    user_email: Optional[EmailStr] = Field(None, description="Filter by user's email (bonuses given or received)")
     hashtag: Optional[str] = Field(None, description="Filter by hashtag (e.g., #teamwork)")
     include_children: bool = Field(False, description="Include bonus replies")
 
