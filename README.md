@@ -1,8 +1,12 @@
 # mcp-bonusly
 
+[![Available on Smithery](https://img.shields.io/badge/Available%20on-Smithery-blue?style=flat&logo=smithery)](https://smithery.ai/)
+
 **Comprehensive MCP server for Bonusly employee recognition platform**
 
 MCP server to interact with Bonusly API, enabling management of employee recognition bonuses through Claude and other MCP clients.
+
+**🚀 Available on [Smithery](https://smithery.ai/) for easy local installation!**
 
 ## Table of Contents
 
@@ -55,7 +59,16 @@ uv sync
 
 ## Installation
 
-### Option 1: Installation with uv (Recommended)
+### Option 1: Install from Smithery (Recommended)
+
+This MCP is available on [Smithery](https://smithery.ai/) as a local installation:
+
+1. Visit [Smithery](https://smithery.ai/)
+2. Search for "mcp-bonusly"
+3. Follow the installation instructions for local MCPs
+4. Configure your Bonusly API token (see Setup section below)
+
+### Option 2: Manual Installation with uv
 
 ```bash
 git clone https://github.com/ajramos/mcp-bonusly
@@ -63,7 +76,7 @@ cd mcp-bonusly
 uv sync
 ```
 
-### Option 2: Installation with pip
+### Option 3: Manual Installation with pip
 
 ```bash
 git clone https://github.com/ajramos/mcp-bonusly
