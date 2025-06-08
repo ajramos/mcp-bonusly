@@ -37,11 +37,9 @@ uv sync
 ## Features
 
 ### ✨ Complete Bonus Management
-- **List bonuses** with advanced filtering
+- **List bonuses** with advanced filtering (including new user_email parameter for team analysis)
 - **Create new bonuses** with validation
 - **Retrieve bonus details** for specific bonuses
-- **Update bonuses** (coming soon)
-- **Delete bonuses** (coming soon)
 
 ### 🔍 Advanced Filtering
 - Filter by date range
@@ -124,6 +122,7 @@ List bonuses with optional filters.
 - `end_date` (optional): End date (format: YYYY-MM-DD)
 - `giver_email` (optional): Giver's email address
 - `receiver_email` (optional): Receiver's email address
+- `user_email` (optional): User's email address (bonuses given or received by this user). **Recommended for team analysis: search for each team member individually to ensure complete coverage.**
 - `hashtag` (optional): Hashtag to filter by (e.g., #teamwork)
 - `include_children` (optional): Include bonus replies
 
@@ -131,7 +130,7 @@ List bonuses with optional filters.
 Create a new recognition bonus.
 
 **Parameters:**
-- `giver_email` (required): Giver's email address
+- `giver_email` (optional): Giver's email address (admin only, regular users send bonuses in their own name)
 - `reason` (required): Bonus reason (e.g., "+10 @user for #teamwork")
 - `parent_bonus_id` (optional): Parent bonus ID for replies
 

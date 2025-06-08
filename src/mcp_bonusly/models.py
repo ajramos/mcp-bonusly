@@ -70,7 +70,7 @@ class BonusResponse(BaseModel):
 
 class CreateBonusRequest(BaseModel):
     """Request model for creating a bonus."""
-    giver_email: EmailStr = Field(..., description="Email address of the person giving the bonus")
+    giver_email: Optional[EmailStr] = Field(None, description="Email address of the person giving the bonus (admin only)")
     reason: str = Field(..., description="Reason for the bonus (e.g., '+10 @user for #teamwork')")
     parent_bonus_id: Optional[str] = Field(None, description="Parent bonus ID for replies")
 

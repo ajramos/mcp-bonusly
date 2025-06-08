@@ -45,9 +45,10 @@ class BonuslyClient:
             base_url=self.BASE_URL,
             timeout=30.0,
             headers={
-                "User-Agent": "mcp-bonusly/1.0.0",
+                "User-Agent": "mcp-bonusly/1.1.1",
                 "Accept": "application/json",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.api_token}"
             }
         )
     
@@ -76,10 +77,9 @@ class BonuslyClient:
             BonuslyRateLimitError: If rate limit is exceeded
             BonuslyNotFoundError: If resource is not found
         """
-        # Add API token to params
+        # API token is sent via Authorization header (configured in client initialization)
         if params is None:
             params = {}
-        params["access_token"] = self.api_token
         
         try:
             logger.debug(f"Making {method} request to {endpoint} with params: {params}")
@@ -176,9 +176,12 @@ class BonuslyClient:
             Created Bonus object
         """
         json_data = {
-            "giver_email": request.giver_email,
             "reason": request.reason
         }
+        
+        # Only include giver_email if specified (admin feature)
+        if request.giver_email:
+            json_data["giver_email"] = request.giver_email
         
         if request.parent_bonus_id:
             json_data["parent_bonus_id"] = request.parent_bonus_id

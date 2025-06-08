@@ -103,7 +103,7 @@ async def handle_list_tools() -> list[Tool]:
                 "properties": {
                     "giver_email": {
                         "type": "string",
-                        "description": "Email address of the person giving the bonus",
+                        "description": "Email address of the person giving the bonus (admin only, optional)",
                         "format": "email"
                     },
                     "reason": {
@@ -115,7 +115,7 @@ async def handle_list_tools() -> list[Tool]:
                         "description": "Optional parent bonus ID for creating a reply/child bonus"
                     }
                 },
-                "required": ["giver_email", "reason"],
+                "required": ["reason"],
                 "additionalProperties": False
             }
         ),
@@ -159,7 +159,6 @@ async def handle_call_tool(name: str, arguments: dict[str, Any]) -> list[TextCon
             return await _handle_create_bonus(client, arguments)
         elif name == "get_bonus":
             return await _handle_get_bonus(client, arguments)
-
         else:
             raise ValueError(f"Unknown tool: {name}")
             
