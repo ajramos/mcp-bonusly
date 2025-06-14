@@ -22,6 +22,7 @@ from pydantic import AnyUrl
 
 from .client import BonuslyClient
 from .models import ListBonusesRequest, CreateBonusRequest, GetBonusRequest
+from . import __version__
 from .exceptions import (
     BonuslyError, BonuslyAuthenticationError, BonuslyAPIError,
     BonuslyNotFoundError, BonuslyConfigurationError
@@ -358,7 +359,7 @@ async def async_main():
             write_stream,
             InitializationOptions(
                 server_name="mcp-bonusly",
-                server_version="1.0.0",
+                server_version=__version__,
                 capabilities=server.get_capabilities(
                     notification_options=NotificationOptions(),
                     experimental_capabilities={}
@@ -373,4 +374,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()
